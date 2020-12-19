@@ -16,10 +16,7 @@ public final class Order {
     }
 
     void addProductInOrderLineWithAmount(String line) {
-        final int separatorIndex = line.indexOf(",");
-        if (separatorIndex <= 0)
-            throw new IllegalArgumentException();
-
+        final int separatorIndex = CsvUtils.findFirstSeparator(line);
         final String rawProductIdText = line.substring(0, separatorIndex);
         final String productIdText = rawProductIdText.trim();
         final ProductId productId = ProductId.read(productIdText);

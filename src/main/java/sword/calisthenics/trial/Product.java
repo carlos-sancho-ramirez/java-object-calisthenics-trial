@@ -13,10 +13,7 @@ public final class Product {
     }
 
     public static Product read(String text) {
-        final int separatorIndex = text.indexOf(',');
-        if (separatorIndex <= 0)
-            throw new IllegalArgumentException();
-
+        final int separatorIndex = CsvUtils.findFirstSeparator(text);
         final String idText = text.substring(0, separatorIndex);
         final ProductId id = ProductId.read(idText);
 

@@ -20,10 +20,7 @@ public final class Customer {
     }
 
     public static Customer read(String line) {
-        final int separatorIndex = line.indexOf(',');
-        if (separatorIndex <= 0)
-            throw new IllegalArgumentException();
-
+        final int separatorIndex = CsvUtils.findFirstSeparator(line);
         final String emailString = line.substring(0, separatorIndex);
         final Email email = Email.read(emailString);
 

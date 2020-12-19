@@ -17,10 +17,7 @@ public final class PersonName {
     }
 
     public static PersonName read(String text) {
-        final int separatorIndex = text.indexOf(',');
-        if (separatorIndex <= 0)
-            throw new IllegalArgumentException();
-
+        final int separatorIndex = CsvUtils.findFirstSeparator(text);
         final String firstNameString = text.substring(0, separatorIndex);
         final FirstName firstName = FirstName.read(firstNameString);
 

@@ -18,10 +18,7 @@ public final class OnSaleProduct {
     }
 
     public static OnSaleProduct read(String text) {
-        final int separatorIndex = text.lastIndexOf(',');
-        if (separatorIndex <= 0)
-            throw new IllegalArgumentException();
-
+        final int separatorIndex = CsvUtils.findLastSeparator(text);
         final String productText = text.substring(0, separatorIndex);
         final Product product = Product.read(productText);
 
