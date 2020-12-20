@@ -30,19 +30,29 @@ public final class Orders implements Printable {
         while (readOrder(reader));
     }
 
+    private void printRow(OrderId id, Printer printer) {
+        final Order order = table.get(id);
+        order.printWithTitle(id, printer);
+    }
+
     @Override
     public void print(Printer printer) {
         printer.println("Orders:");
         final Printer indentedPrinter = new StaticListPrefixPrinterWrapper(printer, " ");
         for (OrderId id : table.keySet())
-            table.get(id).printWithTitle(id, indentedPrinter);
+            printRow(id, indentedPrinter);
+    }
+
+    private void printRowWithProductNamesAndPrices(OrderId orderId, OnSaleProducts onSaleProducts, Printer printer) {
+        final Order order = table.get(orderId);
+        order.printWithTitleAndProductNameAndPrices(orderId, onSaleProducts, printer);
     }
 
     public void printWithProductNamesAndPrices(OnSaleProducts onSaleProducts, Printer printer) {
         printer.println("Orders:");
         final Printer indentedPrinter = new StaticListPrefixPrinterWrapper(printer, " ");
         for (OrderId id : table.keySet())
-            table.get(id).printWithTitleAndProductNameAndPrices(id, onSaleProducts, indentedPrinter);
+            printRowWithProductNamesAndPrices(id, onSaleProducts, indentedPrinter);
     }
 
     public OrdersWithPrice attachPrices(OnSaleProducts onSaleProducts) {

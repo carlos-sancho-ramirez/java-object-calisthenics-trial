@@ -26,12 +26,17 @@ public final class Order {
         addProduct(productId, amount);
     }
 
+    private void printRowWithTitle(ProductId productId, Printer printer) {
+        final Amount amount = products.get(productId);
+        productId.printWithAmount(amount, printer);
+    }
+
     public void printWithTitle(OrderId id, Printer printer) {
         id.print(printer);
         printer.println(":");
         final Printer indentedPrinter = new StaticListPrefixPrinterWrapper(printer, " ");
         for (ProductId productId : products.keySet())
-            productId.printWithAmount(products.get(productId), indentedPrinter);
+            printRowWithTitle(productId, indentedPrinter);
     }
 
     private void printRow(ProductId productId, OnSaleProducts onSaleProducts, Printer printer) {
