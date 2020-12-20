@@ -40,4 +40,8 @@ public final class Amount {
         final String text = Integer.toString(result);
         printer.print(text);
     }
+
+    public void accumulateMultiplied(int price, PriceAccumulator accumulator) {
+        accumulator.add(price * amount);
+    }
 }

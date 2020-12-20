@@ -50,6 +50,25 @@ public final class Order {
         printer.println();
     }
 
+    private void accumulateProductMultipliedPrice(ProductId productId, OnSaleProducts onSaleProducts, PriceAccumulator accumulator) {
+        final OnSaleProduct onSaleProduct = onSaleProducts.findByProductId(productId);
+        final Amount amount = products.get(productId);
+        onSaleProduct.accumulateMultipliedPrice(amount, accumulator);
+    }
+
+    private void printlnTotalPrice(OnSaleProducts onSaleProducts, Printer printer) {
+        final var accumulator = new PriceAccumulator();
+        for (ProductId productId : products.keySet())
+            accumulateProductMultipliedPrice(productId, onSaleProducts, accumulator);
+
+        accumulator.println(printer);
+    }
+
+    private void printTotalsRow(OnSaleProducts onSaleProducts, Printer printer) {
+        printer.print("Total\t\t\t\t\t");
+        printlnTotalPrice(onSaleProducts, printer);
+    }
+
     public void printWithTitleAndProductNameAndPrices(OrderId id, OnSaleProducts onSaleProducts, Printer printer) {
         id.print(printer);
         printer.println(":");
@@ -60,5 +79,8 @@ public final class Order {
 
         for (ProductId productId : products.keySet())
             printRow(productId, onSaleProducts, indentedPrinter);
+
+        printTotalsRow(onSaleProducts, indentedPrinter);
+        printer.println();
     }
 }

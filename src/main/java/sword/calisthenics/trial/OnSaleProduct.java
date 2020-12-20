@@ -43,4 +43,8 @@ public final class OnSaleProduct {
     public void printMultipliedPrice(Amount amount, Printer printer) {
         price.printMultiplied(amount, printer);
     }
+
+    public void accumulateMultipliedPrice(Amount amount, PriceAccumulator accumulator) {
+        price.accumulateMultiplied(amount, accumulator);
+    }
 }

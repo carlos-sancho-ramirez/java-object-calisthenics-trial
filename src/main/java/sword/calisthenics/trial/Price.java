@@ -8,8 +8,12 @@ public final class Price {
         this.price = price;
     }
 
+    public static Price fromValue(int price) {
+        return new Price(price);
+    }
+
     public static Price read(String price) {
-        return new Price(Integer.parseInt(price));
+        return fromValue(Integer.parseInt(price));
     }
 
     public void print(Printer printer) {
@@ -20,5 +24,14 @@ public final class Price {
     public void printMultiplied(Amount amount, Printer printer) {
         amount.printMultiplied(price, printer);
         printer.print("c");
+    }
+
+    public void accumulateMultiplied(Amount amount, PriceAccumulator accumulator) {
+        amount.accumulateMultiplied(price, accumulator);
+    }
+
+    public void println(Printer printer) {
+        print(printer);
+        printer.println();
     }
 }
