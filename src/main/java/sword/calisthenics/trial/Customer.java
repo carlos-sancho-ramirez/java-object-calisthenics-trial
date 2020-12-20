@@ -1,7 +1,5 @@
 package sword.calisthenics.trial;
 
-import java.io.PrintStream;
-
 public final class Customer {
 
     private final PersonName name;

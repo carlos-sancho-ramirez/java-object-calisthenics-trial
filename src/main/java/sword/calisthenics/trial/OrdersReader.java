@@ -3,7 +3,7 @@ package sword.calisthenics.trial;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public final class OrdersReader implements PrintableCollectionReader<Orders> {
+public final class OrdersReader implements PrintableReader<Orders> {
 
     @Override
     public Orders read(BufferedReader reader) throws IOException {

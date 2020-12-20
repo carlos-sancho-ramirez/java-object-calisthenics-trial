@@ -1,7 +1,5 @@
 package sword.calisthenics.trial;
 
-import java.util.Objects;
-
 import static sword.calisthenics.trial.PreconditionUtils.ensureNonNull;
 
 public final class ProductId {

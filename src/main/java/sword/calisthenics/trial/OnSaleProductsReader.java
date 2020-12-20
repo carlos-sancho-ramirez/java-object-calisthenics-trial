@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public final class OnSaleProductsReader implements PrintableCollectionReader<OnSaleProducts> {
+public final class OnSaleProductsReader implements PrintableReader<OnSaleProducts> {
     @Override
     public OnSaleProducts read(BufferedReader reader) throws IOException {
         final ArrayList<OnSaleProduct> table = new ArrayList<>();

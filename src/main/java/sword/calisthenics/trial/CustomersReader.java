@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public final class CustomersReader implements PrintableCollectionReader<Customers> {
+public final class CustomersReader implements PrintableReader<Customers> {
 
     @Override
     public Customers read(BufferedReader reader) throws IOException {

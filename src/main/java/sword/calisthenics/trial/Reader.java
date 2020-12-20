@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public interface CollectionReader<T> {
+public interface Reader<T> {
     T read(BufferedReader reader) throws IOException;
 
     default T read(InputStream stream) throws IOException {
